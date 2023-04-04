@@ -1,0 +1,9 @@
+.active {
+    font-weight: bold !important;
+    color: rgb(142, 221, 247) !important; 
+  } 
+
+.button {
+    border: none !important;
+    background-color: transparent !important;
+}

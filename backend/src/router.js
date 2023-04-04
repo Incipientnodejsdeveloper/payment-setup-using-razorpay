@@ -1,8 +1,10 @@
 import { Router } from "express";
-import Payments from "./payments/route.js"
+import PaymentsRoute from "./payments/route.js";
+import AuthRoute from "./authentication/auth.route.js"
 const router = Router();
 
-router.use('/payment',Payments);
+router.use('/auth',AuthRoute);
+router.use('/payment',PaymentsRoute);
 
 export default router;
 

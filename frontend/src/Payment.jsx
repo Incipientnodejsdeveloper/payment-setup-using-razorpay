@@ -57,7 +57,7 @@ function Payment({ product }) {
 
     return (
         <button onClick={handleOrder} className="btn btn-primary stretched-link">
-            Buy Now
+            Know more...
         </button>
     );
 }
