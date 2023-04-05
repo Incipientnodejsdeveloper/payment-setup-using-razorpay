@@ -6,13 +6,17 @@ import crypto from "crypto"
 export const order = async (req)=>{
     try {
         let {amount,currency} = req.body;
+        
         const options = {
-            amount: amount*100,  // amount in the smallest currency unit
+            amount: +(amount*100).toFixed(2),  // amount in the smallest currency unit
             currency,
           };
+          console.log({amount,currency,options})
         const order = await instance.orders.create(options);
-        return GenResObj(httpStatusCodes.CREATED,true,order);
+        console.log({order})
+        return GenResObj(httpStatusCodes.CREATED,true,'order created successfully',order);
     } catch (err) {
+        console.log({err})
         return GenResObj(httpStatusCodes.INTERNAL_SERVER,false,err.message);
     }
 }

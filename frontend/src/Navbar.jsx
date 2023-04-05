@@ -1,22 +1,24 @@
 import React from "react";
-import { Navbar, Nav, Badge } from "react-bootstrap";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCartArrowDown } from "@fortawesome/free-solid-svg-icons";
+import { Navbar, Nav } from "react-bootstrap";
 
 import { Link, useLocation } from "react-router-dom";
-import { useSelector,useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { client } from "./app/userSlice";
 import "./Navbar.css"
 
+import { MdOutlineShoppingCart } from 'react-icons/md';
+
+
+
 function MyNavbar({ isLoggedIn }) {
-  const {pathname} = useLocation()
+  const { pathname } = useLocation()
   const dispatch = useDispatch()
   const productId = useSelector((state) => state.cart.value);
   const user = useSelector((state) => state.user.value);
-  isLoggedIn = user ? true: false;
-  console.log({ productId,user });
+  isLoggedIn = user ? true : false;
+  console.log({ productId, user });
 
-  const handleLogout = ()=>{
+  const handleLogout = () => {
     dispatch(client(null))
   }
   return (
@@ -34,16 +36,16 @@ function MyNavbar({ isLoggedIn }) {
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav activeKey={pathname} className="me-auto">
-          <Link to="/" className={pathname === "/" ?"nav-link active" : "nav-link"}  >
+          <Link to="/" className={pathname === "/" ? "nav-link active" : "nav-link"}  >
             Home
           </Link>
-          <Link to="/product" className={pathname === "/product" ?"nav-link active" : "nav-link"} >
+          <Link to="/product" className={pathname === "/product" ? "nav-link active" : "nav-link"} >
             Products
           </Link>
-          <Link to="/about" className={pathname === "/about" ?"nav-link active" : "nav-link"} >
+          <Link to="/about" className={pathname === "/about" ? "nav-link active" : "nav-link"} >
             About
           </Link>
-          <Link to="/contact" className={pathname === "/contact" ?"nav-link active" : "nav-link"} >
+          <Link to="/contact" className={pathname === "/contact" ? "nav-link active" : "nav-link"} >
             Contact
           </Link>
         </Nav>
@@ -51,23 +53,20 @@ function MyNavbar({ isLoggedIn }) {
         <Nav>
           {isLoggedIn ? (
             <>
-              <Link to="/cart" className={pathname === "/cart" ?"nav-link active" : "nav-link"}>
-                <FontAwesomeIcon icon={faCartArrowDown} color="black" />
+              <Link to="/cart" className={pathname === "/cart" ? "nav-link active" : "nav-link"}>
+                <MdOutlineShoppingCart  />
                 {productId.length ? (
-                  <Badge bg="secondary">{productId.length}</Badge>
-                ):("")}
+                  <span className="cart-badge" >{productId.length}</span>
+                ) : ("")}
                 Cart
               </Link >
-              <button onClick={handleLogout} className={pathname === "/logout" ?" active button" : "nav-link button"}>
+              <Link onClick={handleLogout} className={pathname === "/logout" ? " active " : "nav-link "}>
                 Logout
-              </button>
+              </Link>
             </>
           ) : (
             <>
-              {/* <Link  to="/login" className={pathname === "/login" ?"nav-link active" : "nav-link"}>
-                Login
-              </Link> */}
-              <Link to="/register" className={pathname === "/register" ?"nav-link active" : "nav-link"}>
+              <Link to="/register" className={pathname === "/register" ? "nav-link active" : "nav-link"}>
                 Login/Register
               </Link>
             </>

@@ -1,9 +1,20 @@
 .active {
-    font-weight: bold !important;
-    color: rgb(142, 221, 247) !important; 
-  } 
+  font-weight: bold !important;
+  color: rgb(142, 221, 247) !important;
+}
 
 .button {
-    border: none !important;
-    background-color: transparent !important;
+  height: "fit-content" !important;
+  border: none !important;
+  background-color: transparent !important;
+}
+
+.cart-badge{
+  position: relative;
+  border-radius: 50%;
+  color: white;
+  background-color: red;
+  top: -9px;
+  right: 5px;
+  padding: 3px
 }

@@ -25,7 +25,7 @@ function ProductDetailsSection({ product }) {
         {checkProduct ? (
           <div className="d-flex justify-content-between">
             <Link to={"/cart"} className="me-2">
-              <Button variant="primary">Checkout</Button>
+              <Button variant="primary">View Cart</Button>
             </Link>
             <Link to={"/product"}>
               <Button variant="warning">More!</Button>

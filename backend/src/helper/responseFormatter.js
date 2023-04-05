@@ -1,4 +1,5 @@
 export const GenResObj = (...payloads) => {
+    console.log({payloads})
     return {
         code: payloads[0],
         data: {

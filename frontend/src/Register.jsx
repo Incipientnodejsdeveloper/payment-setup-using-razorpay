@@ -5,12 +5,16 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { client } from './app/userSlice';
 
+import { FaGithubAlt,FaCodepen } from 'react-icons/fa';
+import {BiMailSend} from 'react-icons/bi';
+
 function Register() {
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
     const handleClick = (e) => {
         const container = document.getElementById('container');
+        console.log({id:e.target.id})
         if (e.target.id === 'signUp') {
           container.classList.add('right-panel-active');
         } else if (e.target.id === 'signIn') {
@@ -23,9 +27,6 @@ function Register() {
         const signInButton = document.getElementById('signIn');
         signUpButton.addEventListener('click', handleClick);
         signInButton.addEventListener('click', handleClick);
-
-        const container = document.getElementById('container');
-        container.classList.add('right-panel-active');
     
         return () => {
           signUpButton.removeEventListener('click', handleClick);
@@ -34,7 +35,7 @@ function Register() {
       }, []);
 
       const handleSignin = async (event) => {
-        event.preventDefault();
+        event.preventDefault(); 
         const config = {
             method: "post",
             url: "http://localhost:5000/api/v1/auth/login",
@@ -83,17 +84,23 @@ function Register() {
     </div>
     {/* <!-- Log In Form Section --> */}
     <section>
-        <div className="log-container" id="container" style={{width: "720px", overflow: 'hidden'}}>
+        <div className="log-container right-panel-active" id="container" style={{width: "720px", overflow: 'hidden'}}>
             <div className="form-container sign-up-container">
                 <form action="#">
                     <h1>Sign Up</h1>
                     <div className="social-container">
-                        <a href="https://Github.com/"  className="social"><i
-                                className="fab fa-github"></i></a>
-                        <a href="https://Codepen.io/"  className="social"><i
-                                className="fab fa-codepen"></i></a>
-                        <a href="mailto:"  className="social"><i
-                                className="fab fa-google"></i></a>
+                        <a href="https://Github.com/"  className="social">
+                        
+                            <FaGithubAlt/>
+                            
+                        </a>
+                        <a href="https://Codepen.io/"  className="social">
+                            
+                                <FaCodepen/>
+                                </a>
+                        <a href="mailto:"  className="social">
+                            <BiMailSend/>
+                        </a>
                     </div>
                     <span>Or use your Email for registration</span>
                     <label>
@@ -112,12 +119,14 @@ function Register() {
                 <form action="#">
                     <h1>Sign in</h1>
                     <div className="social-container">
-                        <a href="https://Github.com/"  className="social"><i
-                                className="fab fa-github"></i></a>
-                        <a href="https://Codepen.io/"  className="social"><i
-                                className="fab fa-codepen"></i></a>
-                        <a href="mailto:"  className="social"><i
-                                className="fab fa-google"></i></a>
+                        <a href="https://Github.com/"  className="social">
+                        <FaGithubAlt/></a>
+                        <a href="https://Codepen.io/"  className="social">
+                            <FaCodepen/>
+                        </a>
+                        <a href="mailto:"  className="social">
+                            <BiMailSend/>
+                        </a>
                     </div>
                     <span> Or sign in using E-Mail Address</span>
                     <label>

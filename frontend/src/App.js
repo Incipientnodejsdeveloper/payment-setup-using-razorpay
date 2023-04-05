@@ -10,6 +10,7 @@ import Cart from "./Cart";
 import Register from "./Register";
 import { ProtectedRoute } from "./ProtectedRoute";
 import { useSelector } from "react-redux";
+import Payment from "./Payment";
 
 function App() {
 
@@ -28,6 +29,7 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/cart" element={<Cart />} />
+            <Route path="/payment/:id" element={<Payment />} />
           </Route>
         </Routes>
       </BrowserRouter>
